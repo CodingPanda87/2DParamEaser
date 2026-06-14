@@ -1,0 +1,96 @@
+<h2>📏 对齐标注 — 清晰图解</h2>
+<p class="subtitle">Aligned Dimension：尺寸线与测量方向平行</p>
+
+<!-- Real-world example -->
+<div class="section">
+  <h3>在实际图纸中长这样</h3>
+  <div class="split">
+    <div class="mockup" style="border-radius:8px;overflow:hidden;">
+      <div class="mockup-header">DXF中的对齐标注</div>
+      <div class="mockup-body" style="padding:16px;background:#0f0f23;">
+        <svg viewBox="0 0 220 160" style="width:100%;">
+          <!-- A slanted shape (wedge/triangle) -->
+          <polygon points="20,120 100,20 180,40" fill="rgba(79,195,247,0.05)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+
+          <!-- Extension lines (垂直线) -->
+          <line x1="100" y1="20" x2="85" y2="6" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <line x1="20" y1="120" x2="5" y2="134" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+          <!-- Dimension line (平行于斜面) -->
+          <line x1="88" y1="4" x2="8" y2="132" stroke="#ff9800" stroke-width="1.5"/>
+
+          <!-- Arrows -->
+          <polygon points="88,4 80,10 83,14" fill="#ff9800"/>
+          <polygon points="8,132 16,126 13,122" fill="#ff9800"/>
+
+          <!-- Dimension text -->
+          <text x="48" y="64" font-size="10" fill="#ff9800" font-family="monospace" transform="rotate(-56,48,64)">120.5</text>
+
+          <!-- Marker point at text center -->
+          <circle cx="48" cy="68" r="5" fill="#ff9800" stroke="#fff" stroke-width="1.5"/>
+          <text x="48" y="60" text-anchor="middle" font-size="8" fill="#ff9800" font-family="monospace">D1</text>
+        </svg>
+      </div>
+    </div>
+    <div class="mockup" style="border-radius:8px;overflow:hidden;">
+      <div class="mockup-header">SVG预览（绑定后）</div>
+      <div class="mockup-body" style="padding:16px;background:#0f0f23;">
+        <svg viewBox="0 0 220 160" style="width:100%;">
+          <polygon points="20,120 100,20 180,40" fill="rgba(79,195,247,0.05)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <line x1="100" y1="20" x2="85" y2="6" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <line x1="20" y1="120" x2="5" y2="134" stroke="rgba(255,255,255,0.2)" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+          <!-- Green dimension line (bound) -->
+          <line x1="88" y1="4" x2="8" y2="132" stroke="#4caf50" stroke-width="1.5"/>
+          <polygon points="88,4 80,10 83,14" fill="#4caf50"/>
+          <polygon points="8,132 16,126 13,122" fill="#4caf50"/>
+
+          <!-- Control badge, rotated along dimension line -->
+          <g transform="translate(48,68) rotate(-56)">
+            <rect x="-42" y="-10" width="84" height="20" rx="5" fill="rgba(76,175,80,0.12)" stroke="rgba(76,175,80,0.35)" stroke-width="1"/>
+            <text x="0" y="5" text-anchor="middle" font-size="10" fill="#4caf50" font-family="monospace" font-weight="600">$slant: float</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- When is aligned used? -->
+<div class="section" style="background:rgba(79,195,247,0.05);border-radius:8px;padding:16px;border:1px solid rgba(79,195,247,0.1);">
+  <h3 style="margin-top:0;">什么时候用对齐标注？</h3>
+  <p style="font-size:14px;">当你要标注一个<strong>斜边/斜线</strong>的实际长度时使用。比如：</p>
+  <ul style="font-size:14px;line-height:1.8;">
+    <li>一个三角形的斜边长度</li>
+    <li>一个楔形件的斜面长度</li>
+    <li>任何<strong>不水平也不垂直</strong>的线段距离</li>
+  </ul>
+  <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:8px;">
+    <strong>区别：</strong>线性标注(Linear)只测量水平或垂直投影距离，对齐标注(Aligned)测量实际距离。
+  </p>
+</div>
+
+<!-- The key visual rule -->
+<div class="section">
+  <h3>🎯 关键设计规则</h3>
+  <div class="cards" style="grid-template-columns:repeat(3,1fr);">
+    <div class="card">
+      <div class="card-body">
+        <h3>① 控件沿尺寸线旋转</h3>
+        <p>标签与尺寸线平行，保持视觉一致性</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3>② 位置 = 原尺寸文字中心</h3>
+        <p>替换原尺寸值，或显示在原文字旁边</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3>③ 统一格式</h3>
+        <p><code>$key: type</code> + 半透明绿色标签</p>
+      </div>
+    </div>
+  </div>
+</div>

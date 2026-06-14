@@ -1,0 +1,121 @@
+<h2>Popover 交互流程</h2>
+<p class="subtitle">点击尺寸 → 弹出编辑卡片 → 绑定参数</p>
+
+<div class="mockup">
+  <div class="mockup-header">交互流程示意</div>
+  <div class="mockup-body" style="padding:16px;">
+    <div style="display:flex;gap:16px;">
+      <!-- SVG Preview side (right panel in the layout) -->
+      <div style="flex:1;background:#f8f9ff;border:1px solid #ddd;border-radius:8px;padding:16px;position:relative;min-height:320px;">
+        <div style="font-size:13px;font-weight:600;margin-bottom:12px;">🖼 SVG预览（右面板）</div>
+
+        <!-- Drawing lines mockup -->
+        <svg viewBox="0 0 260 200" style="width:100%;height:200px;">
+          <!-- Dimension line -->
+          <line x1="20" y1="30" x2="240" y2="30" stroke="#666" stroke-width="1" stroke-dasharray="4,3"/>
+          <!-- Extension lines -->
+          <line x1="20" y1="10" x2="20" y2="50" stroke="#666" stroke-width="0.5"/>
+          <line x1="240" y1="10" x2="240" y2="50" stroke="#666" stroke-width="0.5"/>
+          <!-- Arrows -->
+          <polygon points="20,30 30,26 30,34" fill="#666"/>
+          <polygon points="240,30 230,26 230,34" fill="#666"/>
+          <!-- Dimension text -->
+          <text x="130" y="24" text-anchor="middle" font-size="11" fill="#333">45.2</text>
+
+          <!-- Highlighted clickable dimension (blue) -->
+          <rect x="100" y="14" width="60" height="18" rx="4" fill="#e8f0fe" stroke="#4a90d9" stroke-width="2" stroke-dasharray="4,2" style="cursor:pointer;"/>
+
+          <!-- Another dimension (bound, green indicator) -->
+          <line x1="20" y1="150" x2="240" y2="150" stroke="#4caf50" stroke-width="1.5"/>
+          <polygon points="20,150 30,146 30,154" fill="#4caf50"/>
+          <polygon points="240,150 230,146 230,154" fill="#4caf50"/>
+          <text x="130" y="144" text-anchor="middle" font-size="11" fill="#4caf50">30.0</text>
+          <text x="180" y="140" font-size="9" fill="#4caf50">✅ thickness</text>
+
+          <!-- Unbound dimension (red/orange indicator) -->
+          <line x1="20" y1="80" x2="160" y2="80" stroke="#ff9800" stroke-width="1"/>
+          <polygon points="20,80 30,76 30,84" fill="#ff9800"/>
+          <polygon points="160,80 150,76 150,84" fill="#ff9800"/>
+          <text x="90" y="74" text-anchor="middle" font-size="11" fill="#ff9800">R12.5</text>
+          <text x="120" y="92" font-size="9" fill="#ff9800">⚠ 未绑定</text>
+        </svg>
+
+        <!-- Popover (appears on click) -->
+        <div style="position:absolute;top:68px;right:24px;background:white;border:1px solid #ddd;border-radius:8px;padding:16px;width:220px;box-shadow:0 4px 16px rgba(0,0,0,0.12);">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+            <span style="font-size:14px;font-weight:600;">📏 尺寸 D1</span>
+            <span style="font-size:11px;color:#999;cursor:pointer;">✕</span>
+          </div>
+
+          <div style="font-size:12px;color:#666;margin-bottom:4px;">值: 45.2 mm</div>
+          <div style="font-size:12px;color:#666;margin-bottom:12px;">坐标: (320.5, 150.2)</div>
+          <div style="font-size:12px;color:#666;margin-bottom:12px;">类型: 对齐标注</div>
+
+          <div style="border-top:1px solid #eee;padding-top:12px;">
+            <!-- Parameter type selector -->
+            <div style="margin-bottom:10px;">
+              <div style="font-size:12px;font-weight:600;margin-bottom:4px;">参数类型</div>
+              <div style="display:flex;gap:8px;">
+                <div style="flex:1;background:#e8f0fe;border:2px solid #4a90d9;border-radius:6px;padding:6px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;">float</div>
+                <div style="flex:1;background:#f5f5f5;border:2px solid #ddd;border-radius:6px;padding:6px;text-align:center;font-size:13px;cursor:pointer;">int</div>
+              </div>
+            </div>
+
+            <!-- Parameter key input -->
+            <div style="margin-bottom:10px;">
+              <div style="font-size:12px;font-weight:600;margin-bottom:4px;">参数 Key</div>
+              <input type="text" placeholder="例: hole_diameter" style="width:100%;padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:13px;box-sizing:border-box;">
+            </div>
+
+            <!-- Default value (optional) -->
+            <div>
+              <div style="font-size:12px;font-weight:600;margin-bottom:4px;">默认值 (可选)</div>
+              <input type="text" placeholder="45.2" style="width:100%;padding:6px 8px;border:1px solid #ddd;border-radius:4px;font-size:13px;box-sizing:border-box;">
+            </div>
+
+            <div style="display:flex;gap:8px;margin-top:12px;">
+              <button style="flex:1;background:#4a90d9;color:white;border:none;border-radius:6px;padding:8px;font-size:13px;font-weight:600;cursor:pointer;">✓ 绑定</button>
+              <button style="flex:1;background:#f5f5f5;color:#666;border:1px solid #ddd;border-radius:6px;padding:8px;font-size:13px;cursor:pointer;">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:20px;">
+  <h3>交互流程</h3>
+  <div style="background:#f5f5f5;border-radius:8px;padding:12px;font-size:13px;line-height:1.6;">
+    <strong>①</strong> SVG预览区显示所有尺寸标注<br>
+    <strong>②</strong> 已绑定的尺寸 → 🟢 绿色标记，显示参数key<br>
+    <strong>③</strong> 未绑定的尺寸 → 🟠 橙色标记，显示"未绑定"<br>
+    <strong>④</strong> 用户点击某个尺寸 → 弹出Popover编辑卡片<br>
+    <strong>⑤</strong> 选择 float/int → 输入参数key → 点击绑定<br>
+    <strong>⑥</strong> 绑定后尺寸变绿，key显示在尺寸旁
+  </div>
+</div>
+
+<div class="section">
+  <h3>视觉标记方案</h3>
+  <div class="cards">
+    <div class="card">
+      <div class="card-body">
+        <h3>🟢 绿色 — 已绑定</h3>
+        <p>尺寸线和文字变绿，旁边显示参数key名</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3>🟠 橙色 — 未绑定</h3>
+        <p>尺寸线和文字变橙，显示"未绑定"提示</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h3>🔵 蓝色高亮 — 选中态</h3>
+        <p>当前点击选中的尺寸用蓝色虚线框突出</p>
+      </div>
+    </div>
+  </div>
+</div>

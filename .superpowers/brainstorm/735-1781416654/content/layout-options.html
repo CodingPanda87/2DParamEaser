@@ -1,0 +1,108 @@
+<h2>交互界面布局方案</h2>
+<p class="subtitle">参数绑定界面的三种布局思路</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>左右分栏 — 推荐</h3>
+      <div class="mockup" style="margin: 8px 0;">
+        <div class="mockup-header">布局示意</div>
+        <div class="mockup-body" style="display:flex;gap:4px;padding:8px;min-height:120px;">
+          <div style="flex:3;background:#e8f0fe;padding:8px;border-radius:4px;">
+            <div style="font-size:12px;font-weight:600;">SVG预览区</div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">图纸显示 + 尺寸高亮</div>
+            <div style="font-size:11px;color:#666;">点击尺寸选择</div>
+          </div>
+          <div style="flex:1;background:#f3e8fd;padding:8px;border-radius:4px;">
+            <div style="font-size:12px;font-weight:600;">属性面板</div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">选中尺寸的坐标</div>
+            <div style="font-size:11px;color:#666;">参数类型 (float/int)</div>
+            <div style="font-size:11px;color:#666;">参数key输入</div>
+            <div style="background:#e8f0fe;padding:4px;border-radius:4px;font-size:11px;margin-top:8px;">已绑定: 3/8</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#555;">左图右属性，主次分明。适合宽屏桌面。面板实时响应选中项。</p>
+      <div class="pros-cons" style="margin-top:8px;">
+        <div class="pros"><h4>优势</h4><ul>
+          <li>预览区最大化，适合复杂图纸</li>
+          <li>选中即编辑，操作流畅</li>
+          <li>符合CAD工具的操作习惯</li>
+        </ul></div>
+        <div class="cons"><h4>劣势</h4><ul>
+          <li>宽屏依赖，小屏需响应式</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>列表驱动 — 替代方案</h3>
+      <div class="mockup" style="margin: 8px 0;">
+        <div class="mockup-header">布局示意</div>
+        <div class="mockup-body" style="display:flex;flex-direction:column;gap:4px;padding:8px;min-height:120px;">
+          <div style="flex:1;background:#f3e8fd;padding:8px;border-radius:4px;">
+            <div style="font-size:12px;font-weight:600;">尺寸列表</div>
+            <div style="display:flex;gap:4px;margin-top:4px;">
+              <div style="flex:1;background:#e8f0fe;padding:4px;border-radius:4px;font-size:11px;">D1 ⬤ 45.2mm</div>
+              <div style="flex:1;background:#fce8e8;padding:4px;border-radius:4px;font-size:11px;">D2 ◯ 30.0mm</div>
+              <div style="flex:1;background:#fce8e8;padding:4px;border-radius:4px;font-size:11px;">D3 ◯ R12.5</div>
+            </div>
+          </div>
+          <div style="flex:2;background:#e8f0fe;padding:8px;border-radius:4px;">
+            <div style="font-size:12px;font-weight:600;">SVG预览</div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">高亮当前选中尺寸</div>
+          </div>
+          <div style="background:#f3e8fd;padding:8px;border-radius:4px;">
+            <div style="font-size:12px;font-weight:600;">批量编辑面板</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#555;">上列表+下图+下面板。适合需要批量操作的场景。</p>
+      <div class="pros-cons" style="margin-top:8px;">
+        <div class="pros"><h4>优势</h4><ul>
+          <li>列表概览一目了然</li>
+          <li>方便批量选中/编辑</li>
+        </ul></div>
+        <div class="cons"><h4>劣势</h4><ul>
+          <li>预览区被压缩</li>
+          <li>图纸复杂时定位困难</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>叠加标注 — 激进方案</h3>
+      <div class="mockup" style="margin: 8px 0;">
+        <div class="mockup-header">布局示意</div>
+        <div class="mockup-body" style="display:flex;gap:4px;padding:8px;min-height:120px;">
+          <div style="flex:4;background:#e8f0fe;padding:8px;border-radius:4px;position:relative;">
+            <div style="font-size:12px;font-weight:600;">SVG预览（全屏）</div>
+            <div style="font-size:11px;color:#666;margin-top:4px;">尺寸上直接显示控件标记</div>
+            <div style="position:absolute;bottom:8px;right:8px;background:#f3e8fd;padding:12px;border-radius:4px;width:180px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+              <div style="font-size:11px;font-weight:600;">浮动面板</div>
+              <div style="font-size:11px;">点击尺寸弹出编辑</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:#555;">控件标记直接叠在图纸上，点击弹窗编辑。沉浸式但操作路径深。</p>
+      <div class="pros-cons" style="margin-top:8px;">
+        <div class="pros"><h4>优势</h4><ul>
+          <li>图纸显示最大化</li>
+          <li>所见即所得</li>
+        </ul></div>
+        <div class="cons"><h4>劣势</h4><ul>
+          <li>图纸密集时操作困难</li>
+          <li>需要点击→弹窗两步操作</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</div>

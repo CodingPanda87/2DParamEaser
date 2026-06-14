@@ -1,0 +1,207 @@
+<h2>四种尺寸标注类型 · 视觉方案</h2>
+<p class="subtitle">每种标注在SVG中的表现方式和参数控件绑定样式</p>
+
+<!-- Type 1: Aligned -->
+<div class="section">
+  <h3>📏 ① 对齐标注 (Aligned Dimension)</h3>
+  <div style="display:flex;gap:16px;">
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">DXF图纸标记</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <line x1="20" y1="100" x2="80" y2="20" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="80" y1="20" x2="140" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <!-- Dimension line -->
+        <line x1="30" y1="90" x2="130" y2="30" stroke="#ff9800" stroke-width="1.5"/>
+        <polygon points="30,90 36,84 32,80" fill="#ff9800"/>
+        <polygon points="130,30 124,36 128,40" fill="#ff9800"/>
+        <!-- Marker -->
+        <circle cx="80" cy="60" r="5" fill="#ff9800" stroke="#fff" stroke-width="1.5"/>
+        <text x="80" y="52" text-anchor="middle" font-size="8" fill="#ff9800" font-family="monospace">D1</text>
+      </svg>
+    </div>
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">SVG预览</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <line x1="20" y1="100" x2="80" y2="20" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="80" y1="20" x2="140" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="30" y1="90" x2="130" y2="30" stroke="#4caf50" stroke-width="1.5"/>
+        <polygon points="30,90 36,84 32,80" fill="#4caf50"/>
+        <polygon points="130,30 124,36 128,40" fill="#4caf50"/>
+        <!-- Rotated control badge along dimension -->
+        <g transform="translate(80,60) rotate(-31)">
+          <rect x="-38" y="-9" width="76" height="18" rx="4" fill="rgba(76,175,80,0.12)" stroke="rgba(76,175,80,0.3)" stroke-width="1"/>
+          <text x="0" y="4" text-anchor="middle" font-size="9" fill="#4caf50" font-family="monospace" font-weight="600">$length: float</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div style="background:rgba(79,195,247,0.05);border-radius:8px;padding:12px;margin-top:8px;font-size:13px;border:1px solid rgba(79,195,247,0.1);">
+    <strong>特点：</strong>尺寸线与测量方向平行。控件标签沿尺寸线方向旋转，显示在尺寸文字位置附近。
+    <br><strong>中心坐标：</strong>尺寸文本的中心点。
+  </div>
+</div>
+
+<!-- Type 2: Linear -->
+<div class="section">
+  <h3>📐 ② 线性标注 (Linear Dimension)</h3>
+  <div style="display:flex;gap:16px;">
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">DXF图纸标记</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <rect x="20" y="10" width="120" height="80" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <!-- Horizontal dim -->
+        <line x1="20" y1="22" x2="140" y2="22" stroke="#ff9800" stroke-width="1.5"/>
+        <polygon points="20,22 28,18 28,26" fill="#ff9800"/>
+        <polygon points="140,22 132,18 132,26" fill="#ff9800"/>
+        <line x1="20" y1="10" x2="20" y2="90" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+        <line x1="140" y1="10" x2="140" y2="90" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+        <circle cx="80" cy="22" r="5" fill="#4caf50" stroke="#fff" stroke-width="1.5"/>
+        <text x="80" y="14" text-anchor="middle" font-size="8" fill="#4caf50" font-family="monospace">width</text>
+        <!-- Vertical dim -->
+        <line x1="148" y1="10" x2="148" y2="90" stroke="#ff9800" stroke-width="1.5"/>
+        <polygon points="148,10 144,18 152,18" fill="#ff9800"/>
+        <polygon points="148,90 144,82 152,82" fill="#ff9800"/>
+        <line x1="140" y1="10" x2="160" y2="10" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+        <line x1="140" y1="90" x2="160" y2="90" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+        <circle cx="148" cy="50" r="5" fill="#ff9800" stroke="#fff" stroke-width="1.5"/>
+        <text x="148" y="42" text-anchor="middle" font-size="8" fill="#ff9800" font-family="monospace">D2</text>
+      </svg>
+    </div>
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">SVG预览</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <rect x="20" y="10" width="120" height="80" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="20" y1="22" x2="140" y2="22" stroke="#4caf50" stroke-width="1.5"/>
+        <polygon points="20,22 28,18 28,26" fill="#4caf50"/>
+        <polygon points="140,22 132,18 132,26" fill="#4caf50"/>
+        <rect x="55" y="4" width="50" height="16" rx="4" fill="rgba(76,175,80,0.12)" stroke="rgba(76,175,80,0.3)" stroke-width="1"/>
+        <text x="80" y="15" text-anchor="middle" font-size="9" fill="#4caf50" font-family="monospace" font-weight="600">$width: float</text>
+        <!-- Vertical bound -->
+        <line x1="148" y1="10" x2="148" y2="90" stroke="#4caf50" stroke-width="1.5"/>
+        <polygon points="148,10 144,18 152,18" fill="#4caf50"/>
+        <polygon points="148,90 144,82 152,82" fill="#4caf50"/>
+        <g transform="translate(148,50)">
+          <rect x="-8" y="-18" width="16" height="36" rx="4" fill="rgba(76,175,80,0.12)" stroke="rgba(76,175,80,0.3)" stroke-width="1"/>
+          <text x="0" y="-2" text-anchor="middle" font-size="8" fill="#4caf50" font-family="monospace" font-weight="600" transform="rotate(-90)">$height: float</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div style="background:rgba(79,195,247,0.05);border-radius:8px;padding:12px;margin-top:8px;font-size:13px;border:1px solid rgba(79,195,247,0.1);">
+    <strong>特点：</strong>水平/垂直正交尺寸。控件标签水平显示在尺寸线上方，或垂直尺寸旁旋转90°。
+    <br><strong>中心坐标：</strong>尺寸文本的中心点。
+  </div>
+</div>
+
+<!-- Type 3: Radial/Diameter -->
+<div class="section">
+  <h3>⭕ ③ 半径/直径标注 (Radial / Diameter)</h3>
+  <div style="display:flex;gap:16px;">
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">DXF图纸标记</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <circle cx="80" cy="60" r="40" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="80" y1="60" x2="115" y2="28" stroke="#ff9800" stroke-width="1.5"/>
+        <circle cx="80" cy="60" r="5" fill="#ff9800" stroke="#fff" stroke-width="1.5"/>
+        <text x="80" y="52" text-anchor="middle" font-size="8" fill="#ff9800" font-family="monospace">D1</text>
+        <text x="110" y="24" font-size="9" fill="#ff9800" font-family="monospace">R25</text>
+      </svg>
+    </div>
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">SVG预览</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <circle cx="80" cy="60" r="40" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="80" y1="60" x2="115" y2="28" stroke="#4caf50" stroke-width="1.5"/>
+        <rect x="65" y="70" width="60" height="18" rx="4" fill="rgba(76,175,80,0.12)" stroke="rgba(76,175,80,0.3)" stroke-width="1"/>
+        <text x="95" y="82" text-anchor="middle" font-size="9" fill="#4caf50" font-family="monospace" font-weight="600">$radius: float</text>
+      </svg>
+    </div>
+  </div>
+  <div style="background:rgba(79,195,247,0.05);border-radius:8px;padding:12px;margin-top:8px;font-size:13px;border:1px solid rgba(79,195,247,0.1);">
+    <strong>特点：</strong>从圆心或弧心引出的标注线。控件标签放在标注线末端附近或尺寸值旁。
+    <br><strong>中心坐标：</strong>尺寸文本的中心点（对于半径，通常是标注文字位置）。
+  </div>
+</div>
+
+<!-- Type 4: Angular -->
+<div class="section">
+  <h3>◤ ④ 角度标注 (Angular Dimension)</h3>
+  <div style="display:flex;gap:16px;">
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">DXF图纸标记</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <line x1="80" y1="80" x2="20" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="80" y1="80" x2="130" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <path d="M 30,80 A 50,50 0 0,1 97,42" fill="none" stroke="#ff9800" stroke-width="1.5"/>
+        <text x="58" y="58" font-size="9" fill="#ff9800" font-family="monospace">45°</text>
+        <circle cx="58" cy="62" r="5" fill="#ff9800" stroke="#fff" stroke-width="1.5"/>
+        <text x="58" y="54" text-anchor="middle" font-size="8" fill="#ff9800" font-family="monospace">D1</text>
+      </svg>
+    </div>
+    <div style="flex:1;background:#0f0f23;border-radius:8px;padding:16px;border:1px solid rgba(255,255,255,0.06);">
+      <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">SVG预览</div>
+      <svg viewBox="0 0 160 120" style="width:100%;">
+        <line x1="80" y1="80" x2="20" y2="80" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <line x1="80" y1="80" x2="130" y2="18" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+        <path d="M 30,80 A 50,50 0 0,1 97,42" fill="none" stroke="#4caf50" stroke-width="1.5"/>
+        <rect x="42" y="46" width="44" height="18" rx="4" fill="rgba(76,175,80,0.12)" stroke="rgba(76,175,80,0.3)" stroke-width="1"/>
+        <text x="64" y="58" text-anchor="middle" font-size="9" fill="#4caf50" font-family="monospace" font-weight="600">$angle: float</text>
+      </svg>
+    </div>
+  </div>
+  <div style="background:rgba(79,195,247,0.05);border-radius:8px;padding:12px;margin-top:8px;font-size:13px;border:1px solid rgba(79,195,247,0.1);">
+    <strong>特点：</strong>圆弧形式的标注线。控件标签放在圆弧内侧，靠近尺寸文本位置。
+    <br><strong>中心坐标：</strong>尺寸文本的中心点（沿圆弧方向）。
+  </div>
+</div>
+
+<!-- Summary table -->
+<div class="section">
+  <h3>📊 控件标签样式规则</h3>
+  <div class="mockup" style="border-radius:8px;overflow:hidden;">
+    <div class="mockup-body" style="padding:0;">
+      <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <thead>
+          <tr style="background:rgba(79,195,247,0.1);">
+            <th style="padding:10px 16px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.08);">标注类型</th>
+            <th style="padding:10px 16px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.08);">控件位置</th>
+            <th style="padding:10px 16px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.08);">控件方向</th>
+            <th style="padding:10px 16px;text-align:left;border-bottom:1px solid rgba(0,0,0,0.08);">控件内容</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">对齐标注</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">尺寸文字位置</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">沿尺寸线旋转</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);"><code>$key: type</code></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">线性标注 (水平)</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">尺寸线上方</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">水平</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);"><code>$key: type</code></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">线性标注 (垂直)</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">尺寸线右侧</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">垂直 (旋转90°)</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);"><code>$key: type</code></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">半径/直径</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">标注线末端附近</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);">水平</td>
+            <td style="padding:10px 16px;border-bottom:1px solid rgba(0,0,0,0.04);"><code>$key: type</code></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 16px;">角度标注</td>
+            <td style="padding:10px 16px;">圆弧内侧</td>
+            <td style="padding:10px 16px;">沿弧线方向或水平</td>
+            <td style="padding:10px 16px;"><code>$key: float</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

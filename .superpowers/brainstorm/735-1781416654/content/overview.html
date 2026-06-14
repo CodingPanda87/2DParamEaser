@@ -1,0 +1,60 @@
+<h2>ParamEaser — 整体概念</h2>
+<p class="subtitle">DXF图纸参数控件绑定工具 · 设计提案</p>
+
+<div class="section">
+  <h3>核心流程</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="padding: 16px; font-family: monospace; line-height: 1.8;">
+      ┌──────────┐    ┌──────────────┐    ┌───────────────┐    ┌────────────────┐
+      │ DXF图纸   │ →  │ 提取尺寸标注   │ →  │ 为尺寸绑定参数  │ →  │ 生成含控件SVG   │
+      │ (.dxf)   │    │ 解析中心坐标   │    │ (float/int/key)│    │ 预览 + 存储    │
+      └──────────┘    └──────────────┘    └───────────────┘    └────────────────┘
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>我们要设计的核心问题</h3>
+  <p>你提到的流程中，<strong>"尺寸绑定控件"</strong>是交互设计的核心——用户需要在一个界面中完成：</p>
+  <ol>
+    <li><strong>查看</strong> — 看到DXF图纸中提取出的所有尺寸标注</li>
+    <li><strong>选择</strong> — 点击某个尺寸，查看它对应的中心坐标</li>
+    <li><strong>配置</strong> — 为该尺寸指定参数类型(float/int) 和 参数key</li>
+    <li><strong>确认</strong> — 预览最终带控件的SVG效果</li>
+  </ol>
+</div>
+
+<div class="section">
+  <h3>4种尺寸标注类型</h3>
+  <div class="cards">
+    <div class="card" onclick="toggleSelect(this)">
+      <div class="card-body">
+        <h3>📏 对齐标注 (Aligned)</h3>
+        <p>尺寸线与两点连线平行。最常见。</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSelect(this)">
+      <div class="card-body">
+        <h3>📐 线性标注 (Linear)</h3>
+        <p>水平或垂直方向的尺寸。正交场景。</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSelect(this)">
+      <div class="card-body">
+        <h3>⭕ 半径/直径标注 (Radial/Diameter)</h3>
+        <p>圆弧、圆的半径或直径标注。</p>
+      </div>
+    </div>
+    <div class="card" onclick="toggleSelect(this)">
+      <div class="card-body">
+        <h3>◤ 角度标注 (Angular)</h3>
+        <p>两条线之间的角度标注。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>接下来我们讨论什么</h3>
+  <p>我们先从 <strong>整体交互界面布局</strong> 开始，再看每种尺寸类型的视觉方案，然后深入控件样式和存储结构。</p>
+</div>

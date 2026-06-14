@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash start-server.sh --project-dir \"G:/Code/ParamEaser\")",
+      "Bash(bash *)",
+      "Bash(cmake --version)",
+      "Bash(cmake -B \"G:/Code/ParamEaser/build\" -G \"Ninja\" -DCMAKE_PREFIX_PATH=\"C:/Qt/6.10.0/msvc2022_64\")",
+      "Bash(cmake --help)",
+      "Bash(cmake -G)",
+      "Bash(cmake -B \"G:/Code/ParamEaser/build\" -G \"Ninja\")",
+      "Bash(cmake -B build -DCMAKE_PREFIX_PATH=\"C:/Qt/6.10.0/msvc2022_64\")",
+      "Bash(cmake -B build -G \"Visual Studio 17 2022\" -DCMAKE_PREFIX_PATH=\"C:/Qt/6.10.0/msvc2022_64\")",
+      "Bash(cmake --build build --config Release)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Initial scaffold: CMake + Qt 6.10 project structure with stub files *)",
+      "Bash(cmake -B build -G \"Ninja\" -DCMAKE_PREFIX_PATH=C:/Qt/6.10.0/msvc2022_64)",
+      "Bash(cmake -B build -G \"Visual Studio 17 2022\" -DCMAKE_PREFIX_PATH=C:/Qt/6.10.0/msvc2022_64)",
+      "Bash(cmake --build build)",
+      "Bash(ctest --output-on-failure -R test_ProjectManager)",
+      "Bash(ctest --output-on-failure -R test_ProjectManager -C Debug)",
+      "Bash(PATH='C:/Qt/6.10.0/msvc2022_64/bin;__TRACKED_VAR__' ./tests/Debug/test_ProjectManager.exe)",
+      "Bash(WINEPATH=\"C:/Qt/6.10.0/msvc2022_64/bin\" wine ./tests/Debug/test_ProjectManager.exe)",
+      "Bash(/c/Qt/6.10.0/msvc2022_64/bin/windeployqt.exe --compiler-runtime --no-quick-import --no-opengl-sw --no-system-d3d-compiler --no-angle --verbose 0 ./tests/Debug/test_ProjectManager.exe)",
+      "Bash(cmd *)",
+      "Bash(./run_test.bat)",
+      "Bash(powershell *)",
+      "Bash(echo \"EXIT_CODE=$?\")",
+      "Bash(MSYS2_ARG_CONV_EXCR=\"*\" cmd *)",
+      "Bash(powershell.exe -Command '$env:PATH = '\\\\''D:\\\\Qt\\\\6.10.0\\\\msvc2022_64\\\\bin;'\\\\'' + [Environment]::GetEnvironmentVariable\\('\\\\''PATH'\\\\'','\\\\''User'\\\\''\\); & '\\\\''G:\\\\Code\\\\ParamEaser\\\\build\\\\tests\\\\Debug\\\\test_ProjectManager.exe'\\\\''')",
+      "Bash(MSYS2_ARG_CONV_EXCR=\"*\" D:/Qt/6.10.0/msvc2022_64/bin/windeployqt.exe *)"
+    ]
+  }
+}

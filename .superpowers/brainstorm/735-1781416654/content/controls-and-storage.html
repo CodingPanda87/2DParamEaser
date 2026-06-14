@@ -1,0 +1,177 @@
+<h2>参数控件视觉样式 + 存储结构</h2>
+
+<!-- Part 1: Control Visual Styles -->
+<div class="section">
+  <h3>🎨 参数控件视觉样式</h3>
+  <p class="subtitle">SVG预览中 float / int 控件的视觉表现</p>
+
+  <div class="mockup" style="border-radius:8px;overflow:hidden;">
+    <div class="mockup-header">控件样式一览</div>
+    <div class="mockup-body" style="padding:20px;background:#0f0f23;">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;">
+
+        <!-- Float badge -->
+        <div style="text-align:center;">
+          <div style="background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.35);border-radius:6px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;">
+            <span style="font-size:12px;color:#4fc3f7;font-family:monospace;font-weight:600;">$hole_dia</span>
+            <span style="font-size:10px;color:rgba(79,195,247,0.5);font-family:monospace;">float</span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">🟦 float 控件（蓝色系）</div>
+        </div>
+
+        <!-- Int badge -->
+        <div style="text-align:center;">
+          <div style="background:rgba(76,175,80,0.12);border:1px solid rgba(76,175,80,0.35);border-radius:6px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;">
+            <span style="font-size:12px;color:#4caf50;font-family:monospace;font-weight:600;">$tooth_count</span>
+            <span style="font-size:10px;color:rgba(76,175,80,0.5);font-family:monospace;">int</span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">🟩 int 控件（绿色系）</div>
+        </div>
+
+        <!-- With value -->
+        <div style="text-align:center;">
+          <div style="background:rgba(156,39,176,0.12);border:1px solid rgba(156,39,176,0.35);border-radius:6px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;">
+            <span style="font-size:12px;color:#ce93d8;font-family:monospace;font-weight:600;">$angle</span>
+            <span style="font-size:10px;color:rgba(206,147,216,0.5);font-family:monospace;">float</span>
+            <span style="color:rgba(255,255,255,0.15);">|</span>
+            <span style="font-size:11px;color:rgba(255,255,255,0.4);font-family:monospace;">45.0</span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">🟪 带默认值显示（紫色系 = 有预设值）</div>
+        </div>
+
+        <!-- Unbound -->
+        <div style="text-align:center;">
+          <div style="background:rgba(255,152,0,0.1);border:1px dashed rgba(255,152,0,0.4);border-radius:6px;padding:6px 14px;display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;">
+            <span style="font-size:12px;color:#ff9800;font-family:monospace;font-weight:600;">D5</span>
+            <span style="font-size:10px;color:rgba(255,152,0,0.5);font-family:monospace;">未绑定</span>
+          </div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);">🟠 未绑定状态（橙色虚线）</div>
+        </div>
+
+      </div>
+
+      <!-- Full preview example -->
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+        <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-bottom:8px;">实际SVG效果预览</div>
+        <svg viewBox="0 0 300 50" style="width:100%;">
+          <!-- Free -->
+          <rect x="10" y="10" width="90" height="28" rx="6" fill="rgba(79,195,247,0.08)" stroke="rgba(79,195,247,0.3)" stroke-width="1"/>
+          <text x="55" y="29" text-anchor="middle" font-size="13" fill="#4fc3f7" font-family="monospace" font-weight="600">$hole_dia: float</text>
+          <!-- Int -->
+          <rect x="110" y="10" width="90" height="28" rx="6" fill="rgba(76,175,80,0.08)" stroke="rgba(76,175,80,0.3)" stroke-width="1"/>
+          <text x="155" y="29" text-anchor="middle" font-size="13" fill="#4caf50" font-family="monospace" font-weight="600">$teeth: int</text>
+          <!-- Unbound -->
+          <rect x="210" y="10" width="80" height="28" rx="6" fill="rgba(255,152,0,0.06)" stroke="rgba(255,152,0,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="250" y="29" text-anchor="middle" font-size="13" fill="#ff9800" font-family="monospace">??? unbind</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:rgba(79,195,247,0.05);border-radius:8px;padding:12px;margin-top:8px;font-size:13px;border:1px solid rgba(79,195,247,0.1);">
+    <strong>视觉规则：</strong>
+    <ul>
+      <li>🟦 <strong>float</strong> — 蓝色系标签（科技感，对应小数数值）</li>
+      <li>🟩 <strong>int</strong> — 绿色系标签（自然感，对应整数数值）</li>
+      <li>🟪 <strong>带默认值</strong> — 紫色系，右侧显示默认数值</li>
+      <li>🟠 <strong>未绑定</strong> — 橙色虚线边框 + "???" 占位</li>
+      <li>所有已绑定控件统一格式：<code>$key: type</code></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Part 2: Storage Structure -->
+<div class="section" style="margin-top:32px;">
+  <h3>💾 存储结构设计</h3>
+  <p class="subtitle">数据模型 + SVG文件格式 + 元数据</p>
+
+  <div class="mockup" style="border-radius:8px;overflow:hidden;">
+    <div class="mockup-header">核心数据结构</div>
+    <div class="mockup-body" style="padding:20px;background:#1a1a2e;font-family:monospace;font-size:12px;line-height:1.6;overflow-x:auto;white-space:pre;color:#e0e0e0;">
+<span style="color:#7c4dff;">// ===== 项目文件: drawing-001.parameaser =====</span>
+{
+  <span style="color:#4fc3f7;">"version"</span>: <span style="color:#ce93d8;">"1.0"</span>,
+  <span style="color:#4fc3f7;">"source"</span>: <span style="color:#ce93d8;">"drawing-001.dxf"</span>,
+  <span style="color:#4fc3f7;">"dimensions"</span>: [
+    {
+      <span style="color:#4fc3f7;">"id"</span>: <span style="color:#ce93d8;">"D1"</span>,
+      <span style="color:#4fc3f7;">"type"</span>: <span style="color:#ce93d8;">"aligned"</span>,       <span style="color:#666;">// aligned | linear | radial | diameter | angular</span>
+      <span style="color:#4fc3f7;">"value"</span>: <span style="color:#ce93d8;">120.5</span>,
+      <span style="color:#4fc3f7;">"unit"</span>: <span style="color:#ce93d8;">"mm"</span>,
+      <span style="color:#4fc3f7;">"center"</span>: { <span style="color:#4fc3f7;">"x"</span>: <span style="color:#ce93d8;">48.0</span>, <span style="color:#4fc3f7;">"y"</span>: <span style="color:#ce93d8;">68.0</span> },
+      <span style="color:#4fc3f7;">"rotation"</span>: <span style="color:#ce93d8;">-56.0</span>,          <span style="color:#666;">// 尺寸线旋转角度（度）</span>
+      <span style="color:#4fc3f7;">"param"</span>: {                      <span style="color:#666;">// null = 未绑定</span>
+        <span style="color:#4fc3f7;">"key"</span>: <span style="color:#ce93d8;">"slant_length"</span>,
+        <span style="color:#4fc3f7;">"type"</span>: <span style="color:#ce93d8;">"float"</span>,          <span style="color:#666;">// float | int</span>
+        <span style="color:#4fc3f7;">"default"</span>: <span style="color:#ce93d8;">120.5</span>
+      }
+    },
+    {
+      <span style="color:#4fc3f7;">"id"</span>: <span style="color:#ce93d8;">"D2"</span>,
+      <span style="color:#4fc3f7;">"type"</span>: <span style="color:#ce93d8;">"linear"</span>,
+      <span style="color:#4fc3f7;">"orientation"</span>: <span style="color:#ce93d8;">"horizontal"</span>,
+      <span style="color:#4fc3f7;">"value"</span>: <span style="color:#ce93d8;">200.0</span>,
+      <span style="color:#4fc3f7;">"unit"</span>: <span style="color:#ce93d8;">"mm"</span>,
+      <span style="color:#4fc3f7;">"center"</span>: { <span style="color:#4fc3f7;">"x"</span>: <span style="color:#ce93d8;">150.0</span>, <span style="color:#4fc3f7;">"y"</span>: <span style="color:#ce93d8;">22.0</span> },
+      <span style="color:#4fc3f7;">"param"</span>: <span style="color:#7c4dff;">null</span>               <span style="color:#666;">// 未绑定</span>
+    }
+  ]
+}
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;margin-top:16px;">
+    <div class="mockup" style="flex:1;border-radius:8px;overflow:hidden;">
+      <div class="mockup-header">SVG文件结构</div>
+      <div class="mockup-body" style="padding:16px;background:#1a1a2e;font-family:monospace;font-size:11px;line-height:1.5;color:#e0e0e0;">
+        <span style="color:#666;">&lt;svg&gt;</span>
+        <span style="color:#666;">  &lt;!-- 2D图纸内容 (从DXF转换) --&gt;</span>
+        <span style="color:#666;">  &lt;g id="drawing"&gt;</span>
+        <span style="color:#666;">    &lt;!-- 所有图形实体 --&gt;</span>
+        <span style="color:#666;">  &lt;/g&gt;</span>
+        <span style="color:#666;">  </span>
+        <span style="color:#666;">  &lt;!-- 尺寸标注层 --&gt;</span>
+        <span style="color:#666;">  &lt;g id="dimensions"&gt;</span>
+        <span style="color:#666;">    &lt;!-- 尺寸线 + 文字 --&gt;</span>
+        <span style="color:#666;">  &lt;/g&gt;</span>
+        <span style="color:#666;">  </span>
+        <span style="color:#666;">  &lt;!-- 参数控件层 --&gt;</span>
+        <span style="color:#666;">  &lt;g id="params"&gt;</span>
+        <span style="color:#ce93d8;">&lt;!-- float --&gt;</span>
+        <span style="color:#666;">  &lt;rect class="param-float"</span>
+        <span style="color:#666;">    x="..." y="..." /&gt;</span>
+        <span style="color:#ce93d8;">&lt;!-- int --&gt;</span>
+        <span style="color:#666;">  &lt;rect class="param-int" .../&gt;</span>
+        <span style="color:#666;">  &lt;/g&gt;</span>
+        <span style="color:#666;">  </span>
+        <span style="color:#666;">  &lt;!-- SVG元数据 (隐藏) --&gt;</span>
+        <span style="color:#666;">  &lt;metadata&gt;</span>
+        <span style="color:#666;">    &lt;!-- JSON嵌入 --&gt;</span>
+        <span style="color:#666;">  &lt;/metadata&gt;</span>
+        <span style="color:#666;">&lt;/svg&gt;</span>
+      </div>
+    </div>
+    <div class="mockup" style="flex:1;border-radius:8px;overflow:hidden;">
+      <div class="mockup-header">文件系统</div>
+      <div class="mockup-body" style="padding:16px;background:#1a1a2e;font-family:monospace;font-size:12px;line-height:1.8;color:#e0e0e0;">
+        <span style="color:#4fc3f7;">drawing-001/</span>
+        <span style="color:#666;">├──</span> drawing-001.dxf
+        <span style="color:#666;">├──</span> <span style="color:#ce93d8;">drawing-001.parameaser</span>  <span style="color:#666;">// 项目文件 (JSON)</span>
+        <span style="color:#666;">├──</span> <span style="color:#ce93d8;">drawing-001.svg</span>            <span style="color:#666;">// 输出SVG</span>
+        <span style="color:#666;">└──</span> <span style="color:#999;">preview.html</span>               <span style="color:#666;">// 预览页 (可选)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>📋 数据流汇总</h3>
+  <div class="mockup">
+    <div class="mockup-body" style="padding:16px;font-size:13px;line-height:1.8;">
+      <p><strong>① 解析 DXF</strong> → 提取所有尺寸标注实体（类型、值、中心坐标、旋转角度）</p>
+      <p><strong>② 用户绑定</strong> → 为每个尺寸选择 float/int + 输入 key → 写入 .parameaser 项目文件</p>
+      <p><strong>③ 生成 SVG</strong> → 将 DXF图形 + 尺寸线 + 参数控件标签 合成为完整SVG</p>
+      <p><strong>④ 预览/存储</strong> → 可在浏览器预览SVG，也可导出对外使用</p>
+    </div>
+  </div>
+</div>

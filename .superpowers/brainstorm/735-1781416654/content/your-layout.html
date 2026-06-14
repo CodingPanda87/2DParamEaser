@@ -1,0 +1,76 @@
+<h2>你的布局方案</h2>
+<p class="subtitle">左原始图纸 + 右SVG预览 + 可拖动分割 + 底状态栏</p>
+
+<div class="mockup">
+  <div class="mockup-header">ParamEaser 界面布局</div>
+  <div class="mockup-body" style="padding:0;">
+    <div style="background:#e8e8e8;padding:6px 12px;font-size:13px;font-weight:600;border-bottom:1px solid #ccc;">
+      📐 ParamEaser — 文件名: drawing-001.dxf
+    </div>
+    <div style="display:flex;min-height:350px;">
+      <div style="flex:1;background:#fafafa;padding:12px;border-right:4px solid #4a90d9;position:relative;">
+        <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:8px;">原始DXF图纸</div>
+        <div style="background:#fff;border:1px solid #ddd;border-radius:4px;height:280px;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#999;">
+            <div style="font-size:40px;margin-bottom:8px;">📄</div>
+            <div style="font-size:13px;">DXF渲染</div>
+            <div style="font-size:11px;">（图纸内容）</div>
+          </div>
+        </div>
+        <div style="position:absolute;top:50%;right:-14px;cursor:col-resize;background:#4a90d9;color:white;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:14px;">↔</div>
+      </div>
+      <div style="flex:1;background:#f5f5ff;padding:12px;">
+        <div style="font-size:12px;font-weight:600;color:#555;margin-bottom:8px;">SVG预览（带参数控件）</div>
+        <div style="background:#fff;border:1px solid #ddd;border-radius:4px;height:280px;display:flex;align-items:center;justify-content:center;">
+          <div style="text-align:center;color:#999;">
+            <div style="font-size:40px;margin-bottom:8px;">🎯</div>
+            <div style="font-size:13px;">SVG + 交互控件</div>
+            <div style="font-size:11px;">（点击尺寸绑定参数）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#e8e8e8;padding:4px 12px;font-size:12px;border-top:1px solid #ccc;display:flex;gap:24px;">
+      <span>📊 DXF: 2D drawing</span>
+      <span>📐 尺寸: 12 个</span>
+      <span>✅ 已绑定: 5/12</span>
+      <span>⚠️ 未绑定: 7</span>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>❓ 需要确认一个问题</h3>
+  <p>原始图纸和SVG预览占用了左右两侧，那<strong>参数绑定操作（选择参数类型、输入key）</strong>放在哪里？</p>
+</div>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>右侧底部抽屉面板</h3>
+      <p>SVG预览下方或右侧有一个可折叠的面板，点击尺寸后展开显示类型/key编辑器。</p>
+    </div>
+  </div>
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>浮动弹窗 / Popover</h3>
+      <p>在SVG预览区点击尺寸，直接在尺寸旁边弹出小型编辑卡片。</p>
+    </div>
+  </div>
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>底部面板（状态栏上方）</h3>
+      <p>状态栏上方增加一个可伸缩的面板区域，选中尺寸后显示编辑项。</p>
+    </div>
+  </div>
+  <div class="option" data-choice="d" onclick="toggleSelect(this)">
+    <div class="letter">D</div>
+    <div class="content">
+      <h3>其他想法</h3>
+      <p>你有别的安排？直接在终端告诉我！</p>
+    </div>
+  </div>
+</div>
